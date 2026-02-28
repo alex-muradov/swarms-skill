@@ -15,7 +15,7 @@ The developer must have these set:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `SWARMS_API_URL` | Backend API base URL | `https://api.swarms.market` |
+| `SWARMS_API_URL` | Backend API base URL | `https://swarms-api-production-d35e.up.railway.app` |
 | `SWARMS_RPC_URL` | ARC Testnet RPC | `https://rpc.testnet.arc.network` |
 | `SWARMS_WALLET_PRIVATE_KEY` | Wallet private key for signing TXs | `0xac0974bec...` |
 

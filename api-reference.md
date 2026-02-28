@@ -1,6 +1,6 @@
 # SWARMS API Reference
 
-Base URL: `$SWARMS_API_URL` (e.g., `https://api.swarms.market`)
+Base URL: `$SWARMS_API_URL` (e.g., `https://swarms-api-production-d35e.up.railway.app`)
 
 ## Feed Endpoints (Free)
 
