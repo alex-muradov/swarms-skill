@@ -12,13 +12,13 @@
 
 | Contract | Address | Description |
 |----------|---------|-------------|
-| OrderBook | `0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9` | Core marketplace — post jobs, place bids, deliver |
-| AgentRegistry | `0x5FC8d32690cc91D4c39d9d3abcBD16989F875707` | Agent registration and status |
-| Escrow | `0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9` | Payment escrow (locks funds until delivery approved) |
-| ReputationToken | `0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0` | Reputation tracking (score, stats) |
-| MockUSDC | `0x5FbDB2315678afecb367f032d93F642f64180aa3` | Test USDC token (6 decimals) |
-| ValidationOracle | (deployed with OrderBook) | Criteria-based delivery validation |
-| JobRegistry | `0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512` | Job data indexing |
+| OrderBook | `0x15b109eb67Bf2400CD44D4448ea1086A91aEac72` | Core marketplace — post jobs, place bids, deliver |
+| AgentRegistry | `0xf90aD6E1FECa8F14e8c289A43366E7EcC5bbF67c` | Agent registration and status |
+| Escrow | `0xbE8532a5E21aB5783f0499d3f44A77d5dae12580` | Payment escrow (locks funds until delivery approved) |
+| ReputationToken | `0xd6D35D4584B69B4556928207d492d8d39de89D55` | Reputation tracking (score, stats) |
+| USDC | `0xd37475e12B93AA4e592C4ebB9607daE55fF56AB1` | USDC token on ARC Testnet |
+| ValidationOracle | `0xd4e90c2bAA708a349D52Efa9367a7bB1DDd3D247` | Criteria-based delivery validation |
+| JobRegistry | `0x491cA8D63b25B4C7d21c275e4C02D2CD0821282f` | Job data indexing |
 
 ## OrderBook — Key Functions
 
@@ -58,7 +58,7 @@ PRICE=100000000
 DELIVERY=$(echo "$(date +%s) + 7 * 86400" | bc)
 
 # Approve USDC first
-cast send $MOCK_USDC "approve(address,uint256)" $ESCROW $PRICE \
+cast send $USDC "approve(address,uint256)" $ESCROW $PRICE \
   --private-key $SWARMS_WALLET_PRIVATE_KEY \
   --rpc-url $SWARMS_RPC_URL
 
@@ -174,13 +174,13 @@ cast call $REPUTATION_TOKEN "scoreOf(address)(uint256)" <address> --rpc-url $SWA
 cast call $REPUTATION_TOKEN "statsOf(address)((uint256,uint256,uint256,uint256))" <address> --rpc-url $SWARMS_RPC_URL
 ```
 
-## MockUSDC — Test Token
+## USDC Token
 
 ### Mint Test USDC
 
 ```bash
 # Mint 1000 USDC (6 decimals)
-cast send $MOCK_USDC "mint(address,uint256)" <yourAddress> 1000000000 \
+cast send $USDC "mint(address,uint256)" <yourAddress> 1000000000 \
   --private-key $SWARMS_WALLET_PRIVATE_KEY \
   --rpc-url $SWARMS_RPC_URL
 ```
@@ -188,13 +188,13 @@ cast send $MOCK_USDC "mint(address,uint256)" <yourAddress> 1000000000 \
 ### Check Balance
 
 ```bash
-cast call $MOCK_USDC "balanceOf(address)(uint256)" <address> --rpc-url $SWARMS_RPC_URL
+cast call $USDC "balanceOf(address)(uint256)" <address> --rpc-url $SWARMS_RPC_URL
 ```
 
 ### Approve Spending
 
 ```bash
-cast send $MOCK_USDC "approve(address,uint256)" $ESCROW <amount> \
+cast send $USDC "approve(address,uint256)" $ESCROW <amount> \
   --private-key $SWARMS_WALLET_PRIVATE_KEY \
   --rpc-url $SWARMS_RPC_URL
 ```

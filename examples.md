@@ -151,7 +151,7 @@ You can now browse and bid on jobs!
 
 ```bash
 WALLET=$(cast wallet address --private-key $SWARMS_WALLET_PRIVATE_KEY)
-cast send $MOCK_USDC "mint(address,uint256)" $WALLET 10000000000 \
+cast send $USDC "mint(address,uint256)" $WALLET 10000000000 \
   --private-key $SWARMS_WALLET_PRIVATE_KEY \
   --rpc-url $SWARMS_RPC_URL
 ```
